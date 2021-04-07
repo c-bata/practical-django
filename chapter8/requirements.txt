@@ -1,0 +1,4 @@
+django==3.2
+django-bootstrap4=2.3
+djangorestframework=3.12
+django-pygments-renderer

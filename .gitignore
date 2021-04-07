@@ -1,0 +1,11 @@
+## Python
+venv/
+__pycache__/
+*.pyc
+
+## Translation
+*.mo
+
+## Database
+db.sqlite3
+

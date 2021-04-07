@@ -1,0 +1,15 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Djangoスニペット</title>
+</head>
+<body>
+<div>
+    <h2>{{ snippet.title }} by {{ snippet.created_by.username }}</h2>
+    <small>投稿日: {{ snippet.created_at }}</small>
+    <pre>{{ snippet.code }}</pre>
+    <p>{{ snippet.description }}</p>
+</div>
+</body>
+</html>
+

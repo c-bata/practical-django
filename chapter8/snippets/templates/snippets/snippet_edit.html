@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block main %}
+<h2>スニペットの編集</h2>
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">保存</button>
+    {% endbuttons %}
+</form>
+{% endblock %}
+

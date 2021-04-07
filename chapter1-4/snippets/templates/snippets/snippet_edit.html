@@ -1,0 +1,15 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Djangoスニペット</title>
+</head>
+<body>
+<h1>スニペットの編集</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" >保存</button>
+</form>
+</body>
+</html>
+

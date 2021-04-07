@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block main %}
+<h2>会員登録</h2>
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">登録</button>
+    {% endbuttons %}
+</form>
+{% endblock %}
+

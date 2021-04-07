@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load pygmentize %}
+{% load django_bootstrap5 %}
+
+{% block extraheader %}
+<style>{% pygments_css %}</style>
+{% endblock %}
+
+{% block main %}
+<h2>{{ snippet.title }} by {{ snippet.created_by.username }}</h2>
+
+<div class="snippet-date">
+    投稿日: {{ snippet.created_at|date:"DATETIME_FORMAT" }}
+    {% if user.is_authenticated and snippet.created_by_id == user.id %}
+    <a href="{% url 'snippet_edit' snippet.id %}">編集</a>
+    {% endif %}
+</div>
+
+<div class="source-code">
+    {{ snippet.code|pygmentize:"python3" }}
+</div>
+
+<p>{{ snippet.description }}</p>
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">コメント一覧</h3>
+
+        {% if comments %}
+        {% for c in comments %}
+        <hr/>
+        <p class="card-text">{{ c.text }}</p>
+        <small class="text-muted">by {{ c.commented_by.username }} さん {{ c.commented_at|date:"DATETIME_FORMAT" }}</small>
+        {% endfor %}
+        {% else %}
+        <p>コメントはありません。</p>
+        {% endif %}
+    </div>
+    {% if user.is_authenticated %}
+    <div class="card-body">
+        <h4 class="card-title">コメントを投稿する</h4>
+        <form method="post" action="{% url 'comment_new' snippet.id %}">
+            {% csrf_token %}
+            {% bootstrap_form comment_form %}
+            {% bootstrap_button button_type="submit" content="コメント" %}
+        </form>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
