@@ -1,9 +1,9 @@
 # 実践Django Pythonによる本格Webアプリケーション開発
 
 書籍「実践Django Pythonによる本格Webアプリケーション開発 (翔泳社)」のサンプルコードです。
-[目次はこちら](./contents.md)からご覧いただけます。
+[目次はこちら](./contents.pdf)からご覧いただけます。
 
-* [Amazon.co.jp 商品ページ](https://www.amazon.co.jp/dp/4798153958/)
+* [Amazon.co.jp 商品ページ](https://amazon.co.jp/dp/4798153958/)
 * [翔泳社 商品ページ](https://www.shoeisha.co.jp/book/detail/9784798153964)
 
 <img src="./cover.png" alt="表紙" width="30%">
