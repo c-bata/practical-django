@@ -1,0 +1,32 @@
+import random
+
+from django.contrib.auth import get_user_model
+from django.core.management.base import BaseCommand
+from accounts.tests.factories import UserFactory
+from snippets.models import Snippet
+from snippets.tests.factories import SnippetFactory
+
+UserModel = get_user_model()
+
+class Command(BaseCommand):
+    help = 'Insert dummy users and snippets.'
+
+    def add_arguments(self, parser):
+        parser.add_argument('--users', nargs='?', type=int, default=100)
+        parser.add_argument('--snippets', nargs='?', type=int, default=1000)
+        parser.add_argument('--batch-size', nargs='?', type=int, default=100)
+
+    def handle(self, *args, **options):
+        user_count = options.get("users")
+        snippet_count = options.get("snippets")
+        batch_size = options.get("batch_size")
+
+        UserModel.objects.bulk_create([
+            UserFactory.build() for _ in range(user_count)
+        ], batch_size=batch_size)
+        users = list(UserModel.objects.all())
+
+        Snippet.objects.bulk_create([
+            SnippetFactory.build(created_by=random.choice(users))
+            for _ in range(snippet_count)
+        ], batch_size=batch_size)

@@ -1,0 +1,6 @@
+from django.contrib.auth.decorators import login_required
+from .views import SnippetView
+
+urlpatterns = [
+    path('snippets/', login_required(SnippetView.as_view())),
+]

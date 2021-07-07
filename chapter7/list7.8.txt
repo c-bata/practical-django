@@ -1,0 +1,12 @@
+from accounts.forms import EmailAuthenticationForm
+from django.contrib.auth.views import LoginView
+from django.urls import path
+
+urlpatterns = [
+    path('login/', LoginView.as_view(
+        form_class=EmailAuthenticationForm,  # フォームクラスを指定
+        redirect_authenticated_user=True,
+        template_name='accounts/login.html'
+    ), name='login'),
+    :
+]

@@ -1,0 +1,11 @@
+#: templates/base.html:16
+msgid "Sign out"
+msgstr "サインアウト"
+
+#: templates/base.html:20
+msgid "Sign in"
+msgstr "サインイン"
+
+#: templates/base.html:21
+msgid "Sign up"
+msgstr "会員登録"

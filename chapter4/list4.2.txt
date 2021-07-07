@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}My page{% endblock %}
+{% block content %}Hello {{ username }}!{% endblock %}

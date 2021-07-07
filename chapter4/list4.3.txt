@@ -1,0 +1,6 @@
+<form method="POST">
+    {% csrf_token %}
+    <input name="text">
+    <button type="submit">送信</button>
+</form>
+{% include 'templates/includes/form.html' %}

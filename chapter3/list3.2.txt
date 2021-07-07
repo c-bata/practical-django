@@ -1,0 +1,5 @@
+register_converter(converters.FourDigitYearConverter, 'yyyy')
+urlpatterns = [
+    path('articles/<yyyy:year>/', views.year_archive),
+    ...
+]

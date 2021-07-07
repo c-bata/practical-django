@@ -1,0 +1,34 @@
+from django.contrib import messages
+
+@login_required
+def snippet_new(request):
+    if request.method == 'POST':
+        form = SnippetForm(request.POST)
+        if form.is_valid():
+            snippet = form.save(commit=False)
+            snippet.created_by = request.user
+            snippet.save()
+            messages.add_message(request, messages.SUCCESS,
+                                 "スニペットを作成しました。")
+            return redirect(snippet_detail, snippet_id=snippet.pk)
+        messages.add_message(request, messages.ERROR,
+                             "スニペットの作成に失敗しました。")
+    else:
+        form = SnippetForm()
+    return render(request, "snippets/snippet_new.html", {'form': form})
+
+@login_required
+def snippet_edit(request, snippet_id):
+    snippet = get_object_or_404(Snippet, pk=snippet_id)
+    if request.method == "POST":
+        form = SnippetForm(request.POST, instance=snippet)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS,
+                                 "スニペットを更新しました。")
+            return redirect('snippet_detail', snippet_id=snippet_id)
+        messages.add_message(request, messages.ERROR,
+                             "スニペットの更新に失敗しました。")
+    else:
+        form = SnippetForm(instance=snippet)
+    return render(request, 'snippets/snippet_edit.html', {'form': form})
