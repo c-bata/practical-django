@@ -14,8 +14,8 @@ assignees: 'c-bata'
 https://www.shoeisha.co.jp/book/detail/9784798153964
 -->
 
-* 章: <章番号>
-* ページ: <ページ番号>
-* : 初版
+* 初版 or 第2刷
+* XX 章
+* XX ページ
 
 ## 内容
